@@ -11,6 +11,7 @@ public:
 
 // Approach-2
 
+
 class Solution {
 public:
     vector<int> runningSum(vector<int>& a) {
