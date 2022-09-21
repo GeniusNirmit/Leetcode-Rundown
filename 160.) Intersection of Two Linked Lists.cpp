@@ -45,3 +45,32 @@ public:
         return headA;
     }
 };
+
+// Approach-2
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        stack<ListNode *> s1,s2;
+        ListNode *p = headA;
+        ListNode *q = headB;
+        while(p)
+        {
+            s1.push(p);
+            p = p->next;
+        }
+        while(q)
+        {
+            s2.push(q);
+            q = q->next;
+        }
+        ListNode *t = NULL;
+        while(s1.top() == s2.top())
+        {
+            t = s1.top();
+            s1.pop();
+            s2.pop();
+        }
+        p = t;
+        return p;
+    }
+};
