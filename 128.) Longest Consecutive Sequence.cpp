@@ -1,3 +1,5 @@
+// Approach-1
+
 class Solution {
 public:
     int longestConsecutive(vector<int>& a) {
@@ -21,6 +23,34 @@ public:
         }
         if(counter > max_counter)
             max_counter = counter;
+        return max_counter+1;
+    }
+};
+
+// Approach-2
+
+class Solution {
+public:
+    int longestConsecutive(vector<int>& a) {
+        if(!a.size())
+            return 0;
+        sort(a.begin(),a.end());
+        int counter = 0, max_counter = 0;
+        for(int i=0;i<a.size()-1;i++)
+        {
+            if(a[i] == a[i+1])
+                continue;
+            else if(a[i]+1 == a[i+1])
+                counter++;
+            else
+            {
+                if(max_counter < counter)
+                    max_counter = counter;
+                counter = 0;
+            }
+        }
+        if(max_counter < counter)
+                max_counter = counter;
         return max_counter+1;
     }
 };
