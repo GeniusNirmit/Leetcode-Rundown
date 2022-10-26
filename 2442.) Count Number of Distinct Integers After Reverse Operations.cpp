@@ -1,7 +1,7 @@
 class Solution {
 public:
     int countDistinctIntegers(vector<int>& a) {
-        set<int> s(a.begin(),a.end());
+        unordered_set<int> s(a.begin(),a.end());
         for(int i=0;i<a.size();i++)
         {
             int temp=a[i];
