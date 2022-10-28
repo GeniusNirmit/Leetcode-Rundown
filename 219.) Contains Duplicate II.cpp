@@ -22,3 +22,19 @@ public:
 
 // Approach-2
 
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& a, int k) {
+        unordered_map<int,int> mp;
+        for(int i=0;i<a.size();i++)
+        {
+            if (mp.count(a[i])==0)
+                mp[a[i]] = i;
+            else if (i - mp[a[i]]<=k)
+                return true;
+            else
+                mp[a[i]] = i;
+        }
+        return false;
+    }
+};
