@@ -12,7 +12,6 @@ public:
                 a[i] = a[j];
             }
         }
-        
         return counter;
     }
 };
