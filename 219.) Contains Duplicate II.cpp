@@ -7,6 +7,7 @@ public:
             return false;
         if(k>=a.size())
             k = a.size()-1;
+
         unordered_set<int> s;
         for(int i=0;i<a.size();i++)
         {
