@@ -27,6 +27,7 @@ public:
             for(i=bottom;i>=top;i--)
                 v.push_back(matrix[i][left]);
             left++;
+
         }
         return v;
     }
