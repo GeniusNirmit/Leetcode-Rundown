@@ -1,3 +1,5 @@
+// Approach-1
+
 class Solution {
 public:
     string makeGood(string s) {
@@ -18,5 +20,25 @@ public:
             st.pop();
         }
         return s;
+    }
+};
+
+// Approach-2
+
+class Solution {
+public:
+    string makeGood(string s) {
+        int h = 0;
+        for (int l=0;l<s.size();l++) 
+        {
+            if (h>0 && ((s[l]==s[h-1]+32) || s[l]==s[h-1]-32))
+                h--;
+            else
+            {
+                s[h] = s[l];
+                h++;
+            }
+        }
+        return s.substr(0, h);
     }
 };
