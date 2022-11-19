@@ -26,3 +26,18 @@ public:
                 a[(i+k)%a.size()] = v[i];
         }
     };
+  
+// Approach-3
+
+class Solution 
+{
+public:
+    void rotate(vector<int> a, int k) 
+    {
+        for(;k=k%a.size();a.size()-=k,a+=k)
+        {
+            for(int i=0;i<k;i++)
+                swap(a[i],a[a.size()-k+i]);
+        }
+    }
+};
