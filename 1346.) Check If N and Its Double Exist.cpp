@@ -21,3 +21,20 @@ public:
         return false;
     }
 };
+
+// Approach-2
+
+class Solution {
+public:
+    bool checkIfExist(vector<int>& a) {
+        unordered_map<int,int> mp;
+        for(int i=0;i<a.size();i++)
+            mp[a[i]]=i;
+        for(int i=0;i<a.size();i++)
+        {
+            if(mp.find(a[i]*2)!=mp.end() && mp[a[i]*2]!=i)
+                return true;
+        }
+        return false;
+    }
+};
