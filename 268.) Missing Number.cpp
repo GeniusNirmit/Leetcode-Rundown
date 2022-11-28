@@ -24,3 +24,18 @@ public:
         return 0;
     }
 };
+
+// Approach-2
+
+class Solution {
+public:
+    int missingNumber(vector<int>& a) {
+        int missing = a.size();
+        for(int i=0;i<a.size();i++)
+        {
+            missing ^= i;
+            missing ^= a[i];
+        }
+        return missing;
+    }
+};
