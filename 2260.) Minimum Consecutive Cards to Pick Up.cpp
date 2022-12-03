@@ -1,27 +1,25 @@
 class Solution {
 public:
     int minimumCardPickup(vector<int>& cards) {
-        unordered_map<int,set<int>> mp;
-        vector<int> minimum;
+        unordered_map<int,unordered_set<int>> mp;
         for(int i=0;i<cards.size();i++)
             mp[cards[i]].insert(i);
+        int min = INT_MAX;
         for(auto i:mp)
         {
-            int min = INT_MAX;
             auto prev = i.second.begin();
             auto temp = prev;
             auto curr = temp++;
             while(curr != i.second.end())
             {
-                if((*curr-*prev) != 0 && min > (*curr-*prev))
-                    min = (*curr-*prev);
+                if(abs(*prev-*curr) != 0 && min > abs(*prev-*curr))
+                    min = abs(*prev-*curr);
                 prev = curr;
                 curr++;
             }
-            minimum.push_back(min);
         }
-        if(*min_element(minimum.begin(),minimum.end()) != INT_MAX)
-            return *min_element(minimum.begin(),minimum.end())+1; 
+        if(min != INT_MAX)
+            return min+1; 
         return -1;
     }
 };
