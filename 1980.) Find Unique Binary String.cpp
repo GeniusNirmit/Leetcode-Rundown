@@ -1,3 +1,5 @@
+// Approach-1
+
 class Solution {
 public:
     string findDifferentBinaryString(vector<string>& a) {
@@ -39,6 +41,23 @@ public:
                 }
                 return s;
             }
+        }
+        return s;
+    }
+};
+
+// Approach-2
+
+class Solution {
+public:
+    string findDifferentBinaryString(vector<string>& a) {
+        string s = a[0];
+        for(int i=0;i<a.size();i++)
+        {
+            if(a[i][i] == '0')
+                s[i] = '1';
+            else
+                s[i] = '0';
         }
         return s;
     }
