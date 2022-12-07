@@ -1,3 +1,5 @@
+// Approach-1
+
 class Solution {
 public:
     string customSortString(string order, string s) {
@@ -31,6 +33,21 @@ public:
             }
         }
         reverse(s.begin(),s.end());
+        return s;
+    }
+};
+
+// Approach-2
+
+string orderString;
+bool cmp(char a,char b) {
+    return orderString.find(a)<orderString.find(b);
+}
+class Solution {
+public:
+    string customSortString(string order, string s) {
+        orderString = order;
+        sort(s.begin(),s.end(),cmp);
         return s;
     }
 };
