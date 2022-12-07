@@ -9,22 +9,16 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
-// Approach-1
-
 class Solution {
 public:
     vector<int> v;
-    vector<int> inorderTraversal(TreeNode* root) {
+    vector<int> preorderTraversal(TreeNode* root) {
         if(root)
         {
-            inorderTraversal(root->left);
             v.push_back(root->val);
-            inorderTraversal(root->right);
+            preorderTraversal(root->left);
+            preorderTraversal(root->right);
         }
         return v;
     }
 };
-
-// Approach-2
-
