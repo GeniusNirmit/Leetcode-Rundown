@@ -9,6 +9,7 @@ public:
             listMap[list1[i]]=i;
         for(int i=0;i<list2.size() && i<=min;i++)
         {
+            
             if(listMap.find(list2[i])!=listMap.end())
             {
                 auto temp = listMap.find(list2[i]);
