@@ -22,3 +22,19 @@ public:
         return sortedMatrix;
     }
 };
+
+// Approach - 2
+
+int k;
+bool cmp(vector<int> a, vector<int> b) {
+    return a[k] > b[k];
+}
+class Solution {
+public:
+    vector<vector<int>> sortTheStudents(vector<vector<int>>& score, int k) {
+        ::k = k;
+        vector<vector<int>> sortedMatrix = score;
+        sort(sortedMatrix.begin(),sortedMatrix.end(),cmp);
+        return sortedMatrix;
+    }
+};
