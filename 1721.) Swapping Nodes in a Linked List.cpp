@@ -32,3 +32,24 @@ public:
         return newHead->next;
     }
 };
+
+// Approach - 2
+
+class Solution {
+public:
+    ListNode* swapNodes(ListNode* head, int k) {
+        ListNode* left = head;
+        ListNode* right = head;
+        k--;
+        while(left && k--)
+            left = left->next;
+        ListNode* temp = left;
+        while(temp->next)
+        {
+            temp = temp->next;
+            right = right->next;
+        }
+        swap(left->val,right->val);
+        return head;
+    }
+};
