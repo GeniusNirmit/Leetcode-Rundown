@@ -1,3 +1,5 @@
+// Approach - 1
+
 class Solution {
 public:
     vector<int> findThePrefixCommonArray(vector<int>& A, vector<int>& B) {
@@ -21,6 +23,36 @@ public:
         } 
 
         prefixArray.erase(prefixArray.begin());
+        return prefixArray;
+    }
+};
+
+// Approach - 2
+
+class Solution {
+public:
+    vector<int> findThePrefixCommonArray(vector<int>& A, vector<int>& B) {
+        unordered_set<int> count;
+        vector<int> prefixArray;
+        int counter = 0;
+
+        for(int i=0; i<A.size(); i++)
+        {
+            int sizeA = count.size();
+            count.insert(A[i]);
+
+            if(sizeA == count.size())
+                counter++;
+            
+            int sizeB = count.size();
+            count.insert(B[i]);
+
+            if(sizeB == count.size())
+                counter++;
+
+            prefixArray.push_back(counter);
+        } 
+
         return prefixArray;
     }
 };
