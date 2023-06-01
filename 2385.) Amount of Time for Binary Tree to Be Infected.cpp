@@ -56,3 +56,56 @@ public:
         return maxTime + adder;
     }
 };
+
+// Breadth First Search
+
+class Solution {
+public:
+    int amountOfTime(TreeNode* root, int start) {
+        unordered_map<int, vector<int>> adj;
+        unordered_map<int, bool> visited;
+        queue<int> q;
+        int maxTime = 0;
+        generateGraph(root, adj);
+
+        q.push(start);
+    
+        while(!q.empty())
+        {
+            int size = q.size();
+            maxTime++;
+            while(size--)
+            {
+                int current = q.front();
+                visited[current] = true;
+                q.pop();
+
+                for(int i=0; i<adj[current].size(); i++)
+                {
+                    if(!visited[adj[current][i]])
+                        q.push(adj[current][i]);
+                }
+            }
+        }
+
+        return maxTime - 1;
+    }
+    void generateGraph(TreeNode* root, unordered_map<int, vector<int>>& adj) {
+        if(!root)
+            return;
+        
+        if(root->left)
+        {
+            adj[root->left->val].push_back(root->val);
+            adj[root->val].push_back(root->left->val);
+            generateGraph(root->left, adj);
+        }
+
+        if(root->right)
+        {
+            adj[root->right->val].push_back(root->val);
+            adj[root->val].push_back(root->right->val);
+            generateGraph(root->right, adj);
+        }
+    }
+};
