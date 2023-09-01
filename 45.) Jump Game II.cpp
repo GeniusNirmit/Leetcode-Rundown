@@ -1,17 +1,22 @@
-class Solution {
+class Solution
+{
 public:
-    int jump(vector<int>& a) {
-        vector<int> maxSteps;
-        int jumpCounter = 0;
-        maxSteps.push_back(a[0]);
-        for(int i=1;i<a.size();i++)
-            maxSteps.push_back(max(a[i]+i,maxSteps[i-1]));
-        int i=0;
-        while(i<maxSteps.size()-1)
+    int jump(vector<int> &a)
+    {
+        int counter = 0, n = a.size();
+        vector<int> maxReach;
+
+        maxReach.push_back(a[0]);
+
+        for (int i = 1; i < n; i++)
+            maxReach.push_back(max(maxReach[i - 1], i + a[i]));
+
+        int size = maxReach.size(), i = 0;
+        while (i < size - 1)
         {
-            jumpCounter++;
-            i = maxSteps[i];
+            counter++;
+            i = maxReach[i];
         }
-        return jumpCounter;
+        return counter;
     }
 };
