@@ -28,3 +28,32 @@ public:
         return idealString(s, k, 0, 0, dp);
     }
 };
+
+// Approach - 2 Iterative Bottom-up
+
+class Solution
+{
+public:
+    int longestIdealString(string s, int k)
+    {
+        int n = s.length();
+        vector<vector<int>> dp(n + 1, vector<int>(123, 0));
+
+        for (int ind = n - 1; ind >= 0; ind--)
+        {
+            for (int prev = 0; prev < 123; prev++)
+            {
+                int pick = 0, notPick = 0;
+
+                if (prev == 0 || abs(s[ind] - prev) <= k)
+                    pick = dp[ind + 1][s[ind]] + 1;
+
+                notPick = dp[ind + 1][prev];
+
+                dp[ind][prev] = max(pick, notPick);
+            }
+        }
+
+        return dp[0][0];
+    }
+};
