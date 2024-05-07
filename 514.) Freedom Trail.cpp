@@ -33,3 +33,34 @@ public:
         return freedomTrail(ring, key, 0, 0, dp);
     }
 };
+
+// Approach - 2 Iterative Bottom-up
+
+class Solution
+{
+public:
+    int findRotateSteps(string ring, string key)
+    {
+        int n = key.size(), m = ring.size();
+        vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+
+        for (int i = n - 1; i >= 0; i--)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                int minSteps = 1e9;
+                for (int k = 0; k < m; k++)
+                {
+                    if (key[i] == ring[k])
+                    {
+                        int currentSteps = min(abs(j - k), abs(m - abs(j - k))) + 1;
+                        minSteps = min(minSteps, currentSteps + dp[k][i + 1]);
+                    }
+                }
+                dp[j][i] = minSteps;
+            }
+        }
+
+        return dp[0][0];
+    }
+};
