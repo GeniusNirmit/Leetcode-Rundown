@@ -51,3 +51,41 @@ public:
         return minVal;
     }
 };
+
+// Approach - 2
+
+class Solution
+{
+public:
+    int minFallingPathSum(vector<vector<int>> &grid)
+    {
+        int n = grid.size();
+        int prevMin = 0, prevSecMin = 0, prevInd = -1;
+
+        for (int i = 0; i < n; i++)
+        {
+            int currentMin = INT_MAX, currentSecMin = INT_MAX, currentInd = -1;
+            for (int j = 0; j < n; j++)
+            {
+                int currentVal = grid[i][j];
+                if (j != prevInd)
+                    currentVal += prevMin;
+                else
+                    currentVal += prevSecMin;
+
+                if (currentMin > currentVal)
+                {
+                    currentSecMin = currentMin;
+                    currentMin = currentVal;
+                    currentInd = j;
+                }
+                else if (currentSecMin > currentVal)
+                    currentSecMin = currentVal;
+            }
+            prevMin = currentMin;
+            prevSecMin = currentSecMin;
+            prevInd = currentInd;
+        }
+        return prevMin;
+    }
+};
