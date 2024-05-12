@@ -34,3 +34,34 @@ public:
         return maxVal;
     }
 };
+
+// Approach - 2
+
+class Solution
+{
+    static bool cmp(vector<int> &a, vector<int> &b)
+    {
+        return a[1] < b[1];
+    }
+
+public:
+    int findLongestChain(vector<vector<int>> &pairs)
+    {
+        int n = pairs.size();
+        sort(pairs.begin(), pairs.end(), cmp);
+
+        int prevChainVal = pairs[0][1];
+        int maxLenChain = 1;
+
+        for (int i = 1; i < n; i++)
+        {
+            if (prevChainVal < pairs[i][0])
+            {
+                maxLenChain++;
+                prevChainVal = pairs[i][1];
+            }
+        }
+
+        return maxLenChain;
+    }
+};
