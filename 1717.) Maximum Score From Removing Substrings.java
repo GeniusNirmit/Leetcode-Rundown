@@ -1,8 +1,7 @@
 class Solution {
     public int maximumGain(String s, int x, int y) {
         int n = s.length();
-        if (x < y)
-        {
+        if (x < y) {
             int temp = x;
             x = y;
             y = temp;
@@ -12,29 +11,23 @@ class Solution {
 
         int aCounter = 0, bCounter = 0, totalPoints = 0;
 
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             if (s.charAt(i) == 'a')
                 aCounter++;
-            else if (s.charAt(i) == 'b')
-            {
-                if(aCounter > 0)
-                {
+            else if (s.charAt(i) == 'b') {
+                if (aCounter > 0) {
                     aCounter--;
                     totalPoints += x;
-                }
-                else
+                } else
                     bCounter++;
-            }
-            else
-            {
+            } else {
                 totalPoints += Math.min(bCounter, aCounter) * y;
                 aCounter = 0;
                 bCounter = 0;
             }
 
         }
-        
+
         totalPoints += Math.min(bCounter, aCounter) * y;
         return totalPoints;
     }
