@@ -16,6 +16,7 @@ public:
 
         if (target == 0)
             return 0;
+
         mp[0] = -1;
 
         for (int i = 0; i < n; i++)
