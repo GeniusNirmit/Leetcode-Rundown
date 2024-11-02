@@ -1,18 +1,19 @@
-class Solution {
+class Solution
+{
 public:
-    bool isCircularSentence(string sentence) {
-        if(sentence[0] != sentence[sentence.size()-1])
+    bool isCircularSentence(string sentence)
+    {
+        int n = sentence.length();
+
+        if (sentence[0] != sentence[n - 1])
             return false;
-        int i = 1;
-        while(i != sentence.length()-1)
+
+        for (int i = 0; i < n; i++)
         {
-            if(sentence[i] == ' ')
-            {
-                if(sentence[i-1] != sentence[i+1])
-                    return false;
-            }
-            i++;
+            if (sentence[i] == ' ' && sentence[i - 1] != sentence[i + 1])
+                return false;
         }
+
         return true;
     }
 };
